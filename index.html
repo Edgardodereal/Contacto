@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edgardo de Real | Inversión Blindada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(135deg, #c5a059 0%, #f1d592 50%, #c5a059 100%);
+            --deep-black: #050505;
+            --soft-white: #f4f4f4;
+            --border-color: rgba(197, 160, 89, 0.2);
+            --transition-premium: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--deep-black);
+            color: var(--soft-white);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- LOGO GRUPO SALO FLOTANTE --- */
+        .floating-brand-logo {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 120px;
+            opacity: 0.5;
+            z-index: 1000;
+            pointer-events: none; /* No estorba al hacer click */
+            transition: var(--transition-premium);
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        /* CORRECCIÓN DE MARCO: Círculo Perfecto y Centrado */
+        .profile-wrapper {
+            position: relative;
+            width: 190px;
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 3px; /* Grosor del marco */
+            background: var(--gold-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .perfil-foto {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 200;
+            margin-bottom: 50px;
+            color: #888;
+        }
+
+        /* --- LINKS --- */
+        .links-grid {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-luxury {
+            position: relative;
+            padding: 18px 25px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-premium);
+        }
+
+        .btn-luxury:hover {
+            border-color: #c5a059;
+            background: rgba(197, 160, 89, 0.08);
+            transform: translateY(-3px);
+            padding-left: 35px;
+        }
+
+        .btn-luxury i { color: #c5a059; font-size: 1.1rem; }
+
+        /* --- FORMULARIOS --- */
+        .section-form {
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .glass-card {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            backdrop-filter: blur(15px);
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #c5a059;
+        }
+
+        .input-lujo {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 35px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-lujo:focus { border-bottom-color: #f1d592; }
+
+        label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #c5a059;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gold-gradient);
+            border: none;
+            padding: 20px;
+            color: var(--deep-black);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: var(--transition-premium);
+        }
+
+        .btn-submit:hover { filter: brightness(1.2); letter-spacing: 5px; }
+
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            max-width: 140px;
+            filter: brightness(0) invert(1) opacity(0.6);
+            margin-bottom: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .floating-brand-logo { width: 90px; top: 20px; right: 20px; }
+            .brand-name { font-size: 1.8rem; }
+            .glass-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://gruposalo.com/wp-content/uploads/2025/06/logo.png" class="floating-brand-logo" alt="Grupo Salo">
+
+    <section class="hero">
+        <div class="profile-wrapper">
+            <img src="https://i.ibb.co/q6VmVZ6/perfil-edgardodereal.png" alt="Edgardo de Real" class="perfil-foto">
+        </div>
+        
+        <h1 class="brand-name">EDGARDO DE REAL</h1>
+        <p class="brand-subtitle">Inversión Blindada | Grupo Salo</p>
+
+        <div class="links-grid">
+            <a href="https://wa.me/529981550066" class="btn-luxury"><span>What's App</span> <i class="fab fa-whatsapp"></i></a>
+            <a href="https://edgardodereal.github.io/inversion-blindada/" class="btn-luxury"><span>Conoce nuestra página web</span> <i class="fas fa-shield-alt"></i></a>
+            <a href="https://gruposalo.com/" class="btn-luxury"><span>Sitio web de Grupo Salo</span> <i class="fas fa-landmark"></i></a>
+            <a href="https://www.instagram.com/edgardodereal_/" class="btn-luxury"><span>Instagram</span> <i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1E4dKaRUk9/?mibextid=wwXIfr" class="btn-luxury"><span>Facebook</span> <i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@edgardodereal" class="btn-luxury"><span>TikTok</span> <i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/in/edgardodereal/" class="btn-luxury"><span>LinkedIn</span> <i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@edgardodereal1" class="btn-luxury"><span>YouTube</span> <i class="fab fa-youtube"></i></a>
+        </div>
+    </section>
+
+    <section class="section-form">
+        <div class="glass-card">
+            <h2>¿Tienes alguna pregunta?</h2>
+            <textarea id="pregunta_wa" class="input-lujo" placeholder="¡Compárteme tu pregunta y me contacto contigo!" rows="3"></textarea>
+            <button onclick="enviarPregunta()" class="btn-submit">Enviar Mensaje</button>
+        </div>
+    </section>
+
+    <section class="section-form" style="padding-top: 0;">
+        <div class="glass-card">
+            <h2>Solicita información, asesoría 1 a 1</h2>
+            <form id="lead-form">
+                <label>Nombre Completo</label>
+                <input type="text" class="input-lujo" required>
+                
+                <label>Número de teléfono con código de área</label>
+                <input type="tel" class="input-lujo" placeholder="+52 998 555 8888" required>
+                
+                <label>Proyecto de interés</label>
+                <select class="input-lujo" style="background: #050505;">
+                    <option>Preventas</option>
+                    <option>Entrega Inmediata</option>
+                    <option>Inversión en Copropiedad</option>
+                    <option>Proyectos Auditados, Inversión Blindada</option>
+                </select>
+
+                <label>Destino de Inversión</label>
+                <select class="input-lujo" style="background: #050505;">
+                    <option>Cancún</option>
+                    <option>Tulum</option>
+                    <option>Playa del Carmen</option>
+                </select>
+
+                <button type="submit" class="btn-submit">Solicitar Cita</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <img src="https://gruposalo.com/wp-content/uploads/2025/06/logo.png" alt="Grupo Salo" class="footer-logo">
+        <p style="font-size: 10px; letter-spacing: 2px; color: #555;">EDGARDO DE REAL &copy; 2026 | ESTRATEGIA INMOBILIARIA DE ÉLITE</p>
+    </footer>
+
+    <script>
+        // Configurado para enviar el texto directamente a tu WhatsApp
+        function enviarPregunta() {
+            const msg = document.getElementById("pregunta_wa").value;
+            if(msg.trim() !== "") {
+                const url = `https://wa.me/529981550066?text=${encodeURIComponent(msg)}`;
+                window.open(url, '_blank');
+            } else {
+                alert("Por favor, escribe tu pregunta.");
+            }
+        }
+
+        document.getElementById('lead-form').onsubmit = (e) => {
+            e.preventDefault();
+            alert("Su solicitud ha sido recibida. Me pondré en contacto con usted a la brevedad.");
+        };
+    </script>
+
+</body>
+</html>
